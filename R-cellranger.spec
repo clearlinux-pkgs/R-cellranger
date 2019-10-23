@@ -4,19 +4,19 @@
 #
 Name     : R-cellranger
 Version  : 1.1.0
-Release  : 20
+Release  : 21
 URL      : https://cran.r-project.org/src/contrib/cellranger_1.1.0.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/cellranger_1.1.0.tar.gz
 Summary  : Translate Spreadsheet Cell Ranges to Rows and Columns
 Group    : Development/Tools
 License  : MIT
-Requires: R-markdown
 Requires: R-rematch
 Requires: R-tibble
 BuildRequires : R-markdown
 BuildRequires : R-rematch
 BuildRequires : R-tibble
 BuildRequires : buildreq-R
+BuildRequires : util-linux
 
 %description
 [![TravisCI Build Status](https://travis-ci.org/rsheets/cellranger.svg?branch=master)](https://travis-ci.org/rsheets/cellranger) <!--[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/rsheets/cellranger?branch=master&svg=true)](https://ci.appveyor.com/project/rsheets/cellranger)--> [![codecov.io](https://codecov.io/github/rsheets/cellranger/coverage.svg?branch=master)](https://codecov.io/github/rsheets/cellranger?branch=master) [![DOI](https://zenodo.org/badge/16122/jennybc/cellranger.svg)](http://dx.doi.org/10.5281/zenodo.21970) [![CRAN version](http://www.r-pkg.org/badges/version/cellranger)](https://cran.r-project.org/package=cellranger) ![](http://cranlogs.r-pkg.org/badges/grand-total/cellranger)
@@ -28,13 +28,13 @@ BuildRequires : buildreq-R
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1552726743
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1571809574
 
 %install
-export SOURCE_DATE_EPOCH=1552726743
+export SOURCE_DATE_EPOCH=1571809574
 rm -rf %{buildroot}
-export LANG=C
+export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -63,12 +63,12 @@ R CMD INSTALL --preclean --install-tests --built-timestamp=${SOURCE_DATE_EPOCH} 
 cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
 %{__rm} -rf %{buildroot}%{_datadir}/R/library/R.css
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export _R_CHECK_FORCE_SUGGESTS_=false
-R CMD check --no-manual --no-examples --no-codoc  cellranger || :
+R CMD check --no-manual --no-examples --no-codoc cellranger || :
 
 
 %files
