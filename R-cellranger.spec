@@ -4,7 +4,7 @@
 #
 Name     : R-cellranger
 Version  : 1.1.0
-Release  : 24
+Release  : 25
 URL      : https://cran.r-project.org/src/contrib/cellranger_1.1.0.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/cellranger_1.1.0.tar.gz
 Summary  : Translate Spreadsheet Cell Ranges to Rows and Columns
@@ -12,32 +12,31 @@ Group    : Development/Tools
 License  : MIT
 Requires: R-rematch
 Requires: R-tibble
-BuildRequires : R-markdown
 BuildRequires : R-rematch
 BuildRequires : R-tibble
 BuildRequires : buildreq-R
-BuildRequires : util-linux
 
 %description
-[![TravisCI Build Status](https://travis-ci.org/rsheets/cellranger.svg?branch=master)](https://travis-ci.org/rsheets/cellranger) <!--[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/rsheets/cellranger?branch=master&svg=true)](https://ci.appveyor.com/project/rsheets/cellranger)--> [![codecov.io](https://codecov.io/github/rsheets/cellranger/coverage.svg?branch=master)](https://codecov.io/github/rsheets/cellranger?branch=master) [![DOI](https://zenodo.org/badge/16122/jennybc/cellranger.svg)](http://dx.doi.org/10.5281/zenodo.21970) [![CRAN version](http://www.r-pkg.org/badges/version/cellranger)](https://cran.r-project.org/package=cellranger) ![](http://cranlogs.r-pkg.org/badges/grand-total/cellranger)
+of cell range specification.
 
 %prep
 %setup -q -c -n cellranger
+cd %{_builddir}/cellranger
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1571809574
+export SOURCE_DATE_EPOCH=1589587918
 
 %install
-export SOURCE_DATE_EPOCH=1571809574
+export SOURCE_DATE_EPOCH=1589587918
 rm -rf %{buildroot}
 export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
-export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
-export FFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
+export FCFLAGS="$FFLAGS -O3 -flto -fno-semantic-interposition "
+export FFLAGS="$FFLAGS -O3 -flto -fno-semantic-interposition "
 export CXXFLAGS="$CXXFLAGS -O3 -flto -fno-semantic-interposition "
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
