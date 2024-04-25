@@ -4,7 +4,7 @@
 #
 Name     : R-cellranger
 Version  : 1.1.0
-Release  : 48
+Release  : 49
 URL      : https://cran.r-project.org/src/contrib/cellranger_1.1.0.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/cellranger_1.1.0.tar.gz
 Summary  : Translate Spreadsheet Cell Ranges to Rows and Columns
